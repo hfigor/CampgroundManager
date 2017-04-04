@@ -85,5 +85,21 @@ class CampSiteServiceTests: XCTestCase {
     }
     
   }
+
+  func testGetCampSiteWithMatchingSiteNumber() {
+    _ = campSiteService.addCampSite(1, electricity: true, water: true)
+    
+    let campSite = campSiteService.getCampSite(1)
+    XCTAssertNotNil(campSite, "A campsite should be returned")
+  }
+  
+  func testGetCampSiteNotMatchingSiteNumber() {
+    _ = campSiteService.addCampSite(1, electricity: true, water: true)
+    
+    let campSite = campSiteService.getCampSite(2)
+    XCTAssertNil(campSite, "No campsite should be returned")
+    
+  }
+
   
 }
